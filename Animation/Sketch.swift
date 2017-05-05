@@ -37,7 +37,7 @@ class Sketch : NSObject {
         
         // Set up a Koch snowflake
         kochSnowflake = LindenmayerSystem(angle: 60,
-                                          axiom: "F++F++F",
+                                          axiom: "1F++2F++3F",
                                           rule: "F-F++F-F",
                                           generations: 5)
         
@@ -47,7 +47,14 @@ class Sketch : NSObject {
                                                          reduction: 3,
                                                          x: 120,
                                                          y: 175,
-                                                         direction: 0)
+                                                         direction: 0,
+                                                         colors: [
+                                                                    "1" : LineColor(hue: 0, saturation: 80, brightness: 90),
+                                                                    "2" : LineColor(hue: 120, saturation: 80, brightness: 90),
+                                                                    "3" : LineColor(hue: 240, saturation: 80, brightness: 90)
+                                                            
+                                                                ]
+                                                        )
         
         // Visualize this as a small snowflake
         mediumKochSnowflake = VisualizedLindenmayerSystem(with: kochSnowflake,
@@ -103,13 +110,15 @@ class Sketch : NSObject {
         // The frame rate can be adjusted; the default is 60 fps
         canvas.framesPerSecond = 60
         
+        print(smallKochSnowflake.word[2])
+        
     }
     
     // Runs repeatedly, equivalent to draw() in Processing
     func draw() {
         
         // Render the current system
-        canvas.renderAnimated(system: mediumConstruction, generation: 2)
+        canvas.renderAnimated(system: smallKochSnowflake, generation: 2)
         
     }
     

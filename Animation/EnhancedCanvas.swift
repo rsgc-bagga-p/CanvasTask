@@ -83,6 +83,10 @@ public class EnhancedCanvas : Canvas {
         case "-":
             // Turn right
             self.rotate(by: system.angle * -1)
+        case "1", "2", "3", "4", "5", "6", "7", "8", "9":
+            if let color = system.colors[character] {
+                self.lineColor = color
+            }
         default:
             // Do nothing for any another character in the word
             break
