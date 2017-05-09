@@ -20,6 +20,10 @@ class Sketch : NSObject {
     let kochSwirl : LindenmayerSystem
     let kochConstruction : LindenmayerSystem
     
+    //create multiple rule L-system thang
+    let multipleRuleSystem : LindenmayerSystem
+    let smallMultipleRuleSystem : VisualizedLindenmayerSystem
+    
     // Create the visualizations of the snowflake
     let smallKochSnowflake : VisualizedLindenmayerSystem
     let mediumKochSnowflake : VisualizedLindenmayerSystem
@@ -40,6 +44,9 @@ class Sketch : NSObject {
                                           axiom: "1F++2F++3F",
                                           rule: "F-F++F-F",
                                           generations: 5)
+        
+        // Set up a random thang for testing
+        
         
         // Visualize this as a small snowflake
         smallKochSnowflake = VisualizedLindenmayerSystem(with: kochSnowflake,
