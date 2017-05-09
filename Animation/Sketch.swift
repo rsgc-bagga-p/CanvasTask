@@ -46,6 +46,29 @@ class Sketch : NSObject {
                                           generations: 5)
         
         // Set up a random thang for testing
+        multipleRuleSystem = LindenmayerSystem(angle: 60,
+                                               axiom: "1FX++2F++3X",
+                                               rule: "F-F++F-F",
+                                               generations: 3,
+                                               ruleMultiple: [
+                                                
+                                                "X" : "FF+FF",
+                                                "F" : "F-F++F-F"
+                                                
+                                                             ])
+        
+        smallMultipleRuleSystem = VisualizedLindenmayerSystem(with: multipleRuleSystem,
+                                                              length: 90,
+                                                              reduction: 3,
+                                                              x: 120,
+                                                              y: 175,
+                                                              direction: 0,
+                                                              colors: [
+                                                                "1" : LineColor(hue: 0, saturation: 80, brightness: 90),
+                                                                "2" : LineColor(hue: 120, saturation: 80, brightness: 90),
+                                                                "3" : LineColor(hue: 240, saturation: 80, brightness: 90)
+                                                                      ]
+                                                               )
         
         
         // Visualize this as a small snowflake
@@ -125,7 +148,7 @@ class Sketch : NSObject {
     func draw() {
         
         // Render the current system
-        canvas.renderAnimated(system: smallKochSnowflake, generation: 2)
+        canvas.renderAnimated(system: smallMultipleRuleSystem, generation: 2)
         
     }
     

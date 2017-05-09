@@ -38,7 +38,7 @@ public class LindenmayerSystem {
         self.rule = system.rule
         self.n = system.n
         self.word.append(axiom)   // The first word is the axiom
-        
+        self.ruleMultiple = system.ruleMultiple
         // Apply the production rule
         applyRules()
     }
@@ -57,10 +57,10 @@ public class LindenmayerSystem {
                 // Inspect each character of existing word
                 for character in word[i - 1].characters {
                     
-                    if character == "F" {
+                    if ruleMultiple[character] != nil {
                         
                         // apply production rule, replace "old" F with new string
-                        newWord.append(rule)
+                        newWord.append(ruleMultiple[character]!)
                         
                     } else {
                         
@@ -73,11 +73,10 @@ public class LindenmayerSystem {
                 
                 // Add the re-written word to the system
                 word.append(newWord)
-                
+                print(newWord)
             }
             
         }
-        
     }
     
 }
