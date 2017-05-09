@@ -42,23 +42,24 @@ class Sketch : NSObject {
         // Set up a Koch snowflake
         kochSnowflake = LindenmayerSystem(angle: 60,
                                           axiom: "1F++2F++3F",
-                                          rule: "F-F++F-F",
+                                          rule: [
+                                            
+                                                "F" : "1F-2F++1F-2F"
+                                            
+                                                ],
                                           generations: 5)
         
         // Set up a random thang for testing
         multipleRuleSystem = LindenmayerSystem(angle: 60,
-                                               axiom: "1FX++2F++3X",
-                                               rule: "F-F++F-F",
-                                               generations: 3,
-                                               ruleMultiple: [
-                                                
-                                                "X" : "FF+FF",
-                                                "F" : "F-F++F-F"
-                                                
-                                                             ])
+                                               axiom: "1FX++2FX++3FX",
+                                               rule: [
+                                                "X" : "2F++3X",
+                                                "F" : "3FX++1FX"
+                                                     ],
+                                               generations: 3)
         
         smallMultipleRuleSystem = VisualizedLindenmayerSystem(with: multipleRuleSystem,
-                                                              length: 90,
+                                                              length: 270,
                                                               reduction: 3,
                                                               x: 120,
                                                               y: 175,
@@ -98,7 +99,7 @@ class Sketch : NSObject {
         // Set up a Koch Island
         kochIsland = LindenmayerSystem(angle: 90,
                                        axiom: "F-F-F-F",
-                                       rule: "F-F+F+FF-F-F+F",
+                                       rule: ["F" : "F-F+F+FF-F-F+F"],
                                        generations: 5)
         
         // Visualize the Koch Island
@@ -112,7 +113,7 @@ class Sketch : NSObject {
         // Set up a Koch Swirl
         kochSwirl = LindenmayerSystem(angle: 90,
                                       axiom: "-F",
-                                      rule: "F+F-F-F+F",
+                                      rule: ["F" : "F+F-F-F+F"],
                                       generations: 4)
         
         // Visualize the Koch Swirl
@@ -126,7 +127,7 @@ class Sketch : NSObject {
         // Set up another Koch construction
         kochConstruction = LindenmayerSystem(angle: 90,
                                              axiom: "F-F-F-F",
-                                             rule: "FF-F-F-F-F-F+F",
+                                             rule: ["F" : "FF-F-F-F-F-F+F"],
                                              generations: 3)
         
         // Visualize this other Koch construction
@@ -138,9 +139,9 @@ class Sketch : NSObject {
                                                          direction: 0)
         
         // The frame rate can be adjusted; the default is 60 fps
-        canvas.framesPerSecond = 60
+        canvas.framesPerSecond = 30
         
-        print(smallKochSnowflake.word[2])
+        print(smallMultipleRuleSystem.word[2])
         
     }
     
