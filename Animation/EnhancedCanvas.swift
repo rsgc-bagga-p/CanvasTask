@@ -70,7 +70,7 @@ public class EnhancedCanvas : Canvas {
         
         // Interpret each character of the word
         switch character {
-        case "F":
+        case "F", "X":
             // Go forward while drawing a line
             self.drawLine(fromX: 0, fromY: 0, toX: system.currentLength, toY: 0)
             self.translate(byX: system.currentLength, byY: 0)

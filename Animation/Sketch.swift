@@ -47,22 +47,22 @@ class Sketch : NSObject {
                                                 "F" : "1F-2F++1F-2F"
                                             
                                                 ],
-                                          generations: 5)
+                                          generations: 10)
         
         // Set up a random thang for testing
         multipleRuleSystem = LindenmayerSystem(angle: 60,
-                                               axiom: "1FX++2FX++3FX",
+                                               axiom: "X",
                                                rule: [
-                                                "X" : "2F++3X",
-                                                "F" : "3FX++1FX"
+                                                "X" : "1F-2X-3F",
+                                                "F" : "3X+2F+1X"
                                                      ],
-                                               generations: 3)
+                                               generations: 20)
         
         smallMultipleRuleSystem = VisualizedLindenmayerSystem(with: multipleRuleSystem,
-                                                              length: 270,
-                                                              reduction: 3,
-                                                              x: 120,
-                                                              y: 175,
+                                                              length: 5,
+                                                              reduction: 1,
+                                                              x: 0,
+                                                              y: 480,
                                                               direction: 0,
                                                               colors: [
                                                                 "1" : LineColor(hue: 0, saturation: 80, brightness: 90),
@@ -139,7 +139,7 @@ class Sketch : NSObject {
                                                          direction: 0)
         
         // The frame rate can be adjusted; the default is 60 fps
-        canvas.framesPerSecond = 30
+        canvas.framesPerSecond = 40
         
         print(smallMultipleRuleSystem.word[2])
         
@@ -149,7 +149,7 @@ class Sketch : NSObject {
     func draw() {
         
         // Render the current system
-        canvas.renderAnimated(system: smallMultipleRuleSystem, generation: 2)
+        canvas.renderAnimated(system: smallMultipleRuleSystem, generation: 20)
         
     }
     
