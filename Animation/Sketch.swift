@@ -44,7 +44,7 @@ class Sketch : NSObject {
                                           axiom: "1F++2F++3F",
                                           rule: [
                                             
-                                                "F" : "1F-2F++1F-2F"
+                                                "F" : ["1F-2F++1F-2F"]
                                             
                                                 ],
                                           generations: 10)
