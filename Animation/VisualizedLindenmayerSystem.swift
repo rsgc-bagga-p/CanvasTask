@@ -18,6 +18,7 @@ public class VisualizedLindenmayerSystem : LindenmayerSystem {
     var currentLength : Float               // current line segment length
     var animationPosition = 0               // tracks current character being interpreted when system is animated
     var colors : [Character : LineColor]
+    var systemStack = [StateOfSystem]()
     
     public init(with providedSystem: LindenmayerSystem,
                 length: Float,

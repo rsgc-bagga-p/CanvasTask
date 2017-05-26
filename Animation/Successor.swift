@@ -92,14 +92,18 @@ public func chooseSuccessor(input: [String]) -> String {
         counter += 1
     }
     
-    print(newArray)
+    //print(newArray)
     
     //choose a random number
-    let random = Int(arc4random_uniform(UInt32(newArray.count + 1)))
+    let random = Int(arc4random_uniform(UInt32(newArray.count)))
     
     //print(random)
     
-    //chosenRule = newArray[0]
+    if newArray != [] {
+    
+    chosenRule = newArray[random]
+        
+    }
     
     return chosenRule
     

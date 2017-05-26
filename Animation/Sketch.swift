@@ -53,10 +53,10 @@ class Sketch : NSObject {
         multipleRuleSystem = LindenmayerSystem(angle: 60,
                                                axiom: "X",
                                                rule: [
-                                                "X" : ["1/1F-2X-3F","2/3F-2X-1F" ],
+                                                "X" : ["1/1F-2X-3F","2/4F-5X-6F" ],
                                                 "F" : ["1/3X+2F+1X","3/2X+3F+1X"]
                                                      ],
-                                               generations: 20)
+                                               generations: 5)
         
         smallMultipleRuleSystem = VisualizedLindenmayerSystem(with: multipleRuleSystem,
                                                               length: 5,
@@ -67,7 +67,10 @@ class Sketch : NSObject {
                                                               colors: [
                                                                 "1" : LineColor(hue: 0, saturation: 80, brightness: 90),
                                                                 "2" : LineColor(hue: 120, saturation: 80, brightness: 90),
-                                                                "3" : LineColor(hue: 240, saturation: 80, brightness: 90)
+                                                                "3" : LineColor(hue: 240, saturation: 80, brightness: 90),
+                                                                "4" : LineColor(hue: 288, saturation: 80, brightness: 36),
+                                                                "5" : LineColor(hue: 174, saturation: 71, brightness: 88),
+                                                                "6" : LineColor(hue: 50, saturation: 96, brightness: 100)
                                                                       ]
                                                                )
         
@@ -149,7 +152,7 @@ class Sketch : NSObject {
     func draw() {
         
         // Render the current system
-        canvas.renderAnimated(system: smallMultipleRuleSystem, generation: 10)
+        canvas.renderAnimated(system: smallMultipleRuleSystem, generation: 5)
         
     }
     
