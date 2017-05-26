@@ -64,60 +64,43 @@ import Foundation
 public func chooseSuccessor(input: [String]) -> String {
     
     var newArray : [String] = []
-    var chosenRule : String = ""
+    var counter : Int = 0
     var odds : [Int] = []
-    var runningTotal : Int = 0
-    var probability : [Float] = []
+    var chosenRule : String = ""
+    //var probability : [Float] = []
     
     //create the odds array for each rule
     for rule in input {
         
-        newArray.append(rule)
+        let oddsOfRule = rule.components(separatedBy: "/")
         
-        let probabilityRule = rule.components(separatedBy: "/")
+        if let ruleOdds = Int(oddsOfRule[0]) {
         
-        if let ruleProbability = Int(probabilityRule[0]) {
-        
-        odds.append(ruleProbability)
+        odds.append(ruleOdds)
         
         }
     }
-
     
+    //create the new array
+    for i in odds {
+        
+        for _ in 1...i {
+            
+            newArray.append(input[counter])
+            
+        }
+        counter += 1
+    }
     
+    print(newArray)
     
-//    //create a running total to calculate the probability
-//    for i in 1...newArray.count {
-//        
-//        runningTotal += odds[i-1]
-//        
-//    }
-//    
-//    //create the probabilities for each rule
-//    for j in 1...odds.count {
-//        
-//        probability.append(Float(odds[j-1]/runningTotal))
-//        
-//    }
-//
-//    //choose a random number
-//    let random = Float(Int(arc4random_uniform(100))/1000)
-//    
-//    //finally compare the values and then choose the rule
-//    for k in 1...probability.count {
-//        
-//        if random <= probability[k-1] {
-//            
-//            chosenRule = newArray[k-1]
-//            
-//        } else if random >= probability[k-1] && random <= probability[k] {
-//            
-//            chosenRule = newArray[k]
-//            
-//        }
-//        
-//    }
-//    
-    //return the new rule
+    //choose a random number
+    let random = Int(arc4random_uniform(UInt32(newArray.count + 1)))
+    
+    //print(random)
+    
+    //chosenRule = newArray[0]
+    
     return chosenRule
+    
 }
