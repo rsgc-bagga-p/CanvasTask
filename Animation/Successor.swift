@@ -66,37 +66,58 @@ public func chooseSuccessor(input: [String]) -> String {
     var newArray : [String] = []
     var chosenRule : String = ""
     var odds : [Int] = []
-    //var probability : [Float] = []
+    var runningTotal : Int = 0
+    var probability : [Float] = []
     
-    //create the odds for each rule
+    //create the odds array for each rule
     for rule in input {
+        
+        newArray.append(rule)
         
         let probabilityRule = rule.components(separatedBy: "/")
         
-        odds.append(Int(probabilityRule[0])!)
+        if let ruleProbability = Int(probabilityRule[0]) {
         
+        odds.append(ruleProbability)
         
+        }
     }
 
     
-    //create the new array of rules, each with different amounts of the same rule
-    for i in 1...odds.count {
-        
-        for j in 0...odds[i] {
-            
-            newArray.append(input[i])
-            
-        }
-        
-    }
     
-    //choose a random number and return a string
-    let random = Int(arc4random_uniform(UInt32(newArray.count)))
     
-    //set the new rule the random chosen
-    chosenRule = newArray[random]
-    
+//    //create a running total to calculate the probability
+//    for i in 1...newArray.count {
+//        
+//        runningTotal += odds[i-1]
+//        
+//    }
+//    
+//    //create the probabilities for each rule
+//    for j in 1...odds.count {
+//        
+//        probability.append(Float(odds[j-1]/runningTotal))
+//        
+//    }
+//
+//    //choose a random number
+//    let random = Float(Int(arc4random_uniform(100))/1000)
+//    
+//    //finally compare the values and then choose the rule
+//    for k in 1...probability.count {
+//        
+//        if random <= probability[k-1] {
+//            
+//            chosenRule = newArray[k-1]
+//            
+//        } else if random >= probability[k-1] && random <= probability[k] {
+//            
+//            chosenRule = newArray[k]
+//            
+//        }
+//        
+//    }
+//    
     //return the new rule
     return chosenRule
-
 }

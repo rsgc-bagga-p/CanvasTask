@@ -59,7 +59,7 @@ public class LindenmayerSystem {
                     if rule[character] != nil {
                         
                         // apply production rule, replace "old" F with new string
-                        newWord.append(rule[character]!)
+                        newWord.append(chooseSuccessor(input: rule[character]!))
                         
                     } else {
                         
