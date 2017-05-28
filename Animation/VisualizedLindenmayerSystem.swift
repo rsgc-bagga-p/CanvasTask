@@ -36,6 +36,9 @@ public class VisualizedLindenmayerSystem : LindenmayerSystem {
     var colors : [Character : LineColor]
     var systemStack = [StateOfSystem]()
     var currentAngle : Degrees
+    var initialThickness : Float
+    var currentThickness : Float
+    var thicknessReduction : Float
     
     public init(with providedSystem: LindenmayerSystem,
                 length: Float,
@@ -43,7 +46,9 @@ public class VisualizedLindenmayerSystem : LindenmayerSystem {
                 x: Float,
                 y: Float,
                 direction: Int,
-                colors: [Character : LineColor] = [:]) {
+                colors: [Character : LineColor] = [:],
+                thickness: Float,
+                thicknessReduction: Float) {
         
         // Initialize stored properties
         self.initialLength = length
@@ -54,7 +59,9 @@ public class VisualizedLindenmayerSystem : LindenmayerSystem {
         self.currentLength = self.initialLength
         self.colors = colors
         self.currentAngle = Degrees(direction)
+        self.initialThickness = thickness
+        self.thicknessReduction = thicknessReduction
+        self.currentThickness = self.initialThickness
         super.init(with: providedSystem)
-        
     }
 }
