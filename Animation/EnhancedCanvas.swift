@@ -117,6 +117,7 @@ public class EnhancedCanvas : Canvas {
             system.x = system.systemStack[system.systemStack.count - 1].systemX
             system.y = system.systemStack[system.systemStack.count - 1].systemY
             system.currentAngle = system.systemStack[system.systemStack.count - 1].systemAngle
+            system.systemStack.removeLast()
             
         case "1", "2", "3", "4", "5", "6", "7", "8", "9":
             if let color = system.colors[character] {

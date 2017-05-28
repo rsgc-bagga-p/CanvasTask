@@ -54,7 +54,7 @@ class Sketch : NSObject {
                                           generations: 10)
         
         //branching system for testing
-        branchingSystem = LindenmayerSystem(angle: 22, axiom: "F", rule: ["F" : ["1/FF-[-F+F+F]+[+F-F-F]"]], generations: 5)
+        branchingSystem = LindenmayerSystem(angle: 22, axiom: "FX", rule: ["F" : ["1/FF-[-F+F]+[+F-F]"], "X" : ["1/FF+[+F]+[-F]"]], generations: 5)
         
         smallBranchingSystem = VisualizedLindenmayerSystem(with: branchingSystem, length: 10, reduction: 1, x: 250, y: 250, direction: 90)
         
