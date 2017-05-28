@@ -37,6 +37,10 @@ class Sketch : NSObject {
     let branchingSystem : LindenmayerSystem
     let smallBranchingSystem : VisualizedLindenmayerSystem
     
+    //create branching system for testing
+    let branchingSystem2 : LindenmayerSystem
+    let smallBranchingSystem2 : VisualizedLindenmayerSystem
+    
     // This runs once, equivalent to setup() in Processing
     override init() {
         
@@ -56,7 +60,12 @@ class Sketch : NSObject {
         //branching system for testing
         branchingSystem = LindenmayerSystem(angle: 22, axiom: "FX", rule: ["F" : ["1/FF-[-F+F]+[+F-F]"], "X" : ["1/FF+[+F]+[-F]"]], generations: 5)
         
-        smallBranchingSystem = VisualizedLindenmayerSystem(with: branchingSystem, length: 10, reduction: 1, x: 250, y: 250, direction: 90)
+        smallBranchingSystem = VisualizedLindenmayerSystem(with: branchingSystem, length: 10, reduction: 1, x: 250, y: 50, direction: 90)
+        
+        //branching system for testing
+        branchingSystem2 = LindenmayerSystem(angle: 22, axiom: "F", rule: ["F" : ["1/FF-[-F+F+F]+[+F-F-F]"]], generations: 5)
+        
+        smallBranchingSystem2 = VisualizedLindenmayerSystem(with: branchingSystem2, length: 10, reduction: 1, x: 50, y: 50, direction: 90)
         
         // Set up a random thang for testing
         multipleRuleSystem = LindenmayerSystem(angle: 60,
@@ -161,7 +170,7 @@ class Sketch : NSObject {
     func draw() {
         
         // Render the current system
-        canvas.renderAnimated(systems: [smallMultipleRuleSystem,smallKochSnowflake,smallBranchingSystem], generations: [5,3,5])
+        canvas.renderAnimated(systems: [smallMultipleRuleSystem,smallKochSnowflake,smallBranchingSystem,smallBranchingSystem2], generations: [5,3,5,5])
         
     }
     
