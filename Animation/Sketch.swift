@@ -44,7 +44,7 @@ class Sketch : NSObject {
                                           axiom: "1F++2F++3F",
                                           rule: [
                                             
-                                                "F" : ["1F-2F++1F-2F"]
+                                                "F" : ["1/1F-2F++1F-2F"]
                                             
                                                 ],
                                           generations: 10)
@@ -152,7 +152,7 @@ class Sketch : NSObject {
     func draw() {
         
         // Render the current system
-        canvas.renderAnimated(system: smallMultipleRuleSystem, generation: 5)
+        canvas.renderAnimated(systems: [smallMultipleRuleSystem,smallKochSnowflake], generations: [5,3])
         
     }
     

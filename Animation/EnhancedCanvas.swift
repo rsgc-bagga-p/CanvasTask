@@ -29,14 +29,25 @@ public class EnhancedCanvas : Canvas {
 
     }
     
-    public func renderAnimated(system : VisualizedLindenmayerSystem, generation : Int) {
+    public func renderAnimated(systems : [VisualizedLindenmayerSystem], generations : [Int]) {
         
-        //var i = 0
+        var i = 0
         
-        //for system in systems {
+        var generation: Int = 0
+        
+        for system in systems {
         
         // Verify that generation that was asked to be rendered actually exists
-        var generation = generation
+        if generations.count > i {
+            
+            generation = generations[i]
+            
+        } else {
+            
+            generation = generations[generations.count - 1]
+            
+        }
+        
         if generation > system.n {
             generation = system.n
         }
@@ -67,9 +78,9 @@ public class EnhancedCanvas : Canvas {
             system.animationPosition += 1
 
         }
-            //i += 1
-        //}
-        
+            i += 1
+    }
+    
     }
     
     func interpret(character : Character, forThis system : VisualizedLindenmayerSystem) {
