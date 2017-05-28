@@ -21,7 +21,7 @@ public class EnhancedCanvas : Canvas {
         
         // Render the word
         self.saveState()
-        self.translate(byX: system.x, byY: system.y) // Move turtle to starting point
+        //self.translate(byX: system.x, byY: system.y) // Move turtle to starting point
         for c in system.word[generation].characters {
             interpret(character: c, forThis: system)
         }
@@ -30,6 +30,10 @@ public class EnhancedCanvas : Canvas {
     }
     
     public func renderAnimated(system : VisualizedLindenmayerSystem, generation : Int) {
+        
+        //var i = 0
+        
+        //for system in systems {
         
         // Verify that generation that was asked to be rendered actually exists
         var generation = generation
@@ -44,7 +48,7 @@ public class EnhancedCanvas : Canvas {
             system.currentLength = Float( Double(system.initialLength) / pow(Double(system.reduction), Double(generation)) )
 
             // Move turtle to starting point
-            self.translate(byX: system.x, byY: system.y) // Move turtle to starting point
+            //self.translate(byX: system.x, byY: system.y) // Move turtle to starting point
         }
         
         // Don't run past end of the word
@@ -63,26 +67,41 @@ public class EnhancedCanvas : Canvas {
             system.animationPosition += 1
 
         }
+            //i += 1
+        //}
         
     }
     
     func interpret(character : Character, forThis system : VisualizedLindenmayerSystem) {
         
+        let newX: Float = Float(CGFloat(system.x)) + Float(CGFloat(system.currentLength) * CGFloat(cos(system.currentAngle * CGFloat(M_PI)/180)))
+        let newY: Float = Float(CGFloat(system.y)) + Float(CGFloat(system.currentLength) * CGFloat(sin(system.currentAngle * CGFloat(M_PI)/180)))
+        
+        //print("OLDX: \(system.x)\tNEWX: \(newX)")
+        //self.drawLine(fromX: system.x, fromY: system.y, toX: newX, toY: newY)
+        //print("OLDY: \(system.y)\tNEWY: \(newY)")
         // Interpret each character of the word
         switch character {
         case "F", "X":
             // Go forward while drawing a line
-            self.drawLine(fromX: 0, fromY: 0, toX: system.currentLength, toY: 0)
-            self.translate(byX: system.currentLength, byY: 0)
+            self.drawLine(fromX: system.x, fromY: system.y, toX: newX, toY: newY)
+            system.x = newX
+            system.y = newY
+            print("drewline")
         case "f":
             // Go forward without drawing a line
-            self.translate(byX: system.currentLength, byY: 0)
+            system.x = newX
+            system.y = newY
         case "+":
-            // Turn left
-            self.rotate(by: system.angle)
+            //turn left
+            system.currentAngle += system.angle
         case "-":
-            // Turn right
-            self.rotate(by: system.angle * -1)
+            //turn right
+            system.currentAngle -= system.angle
+//        case "[":
+//            system.systemStack.append(StateOfSystem.init(systemX: Float(system.x), systemY: Float(system.y), systemAngle: system.currentAngle))
+       // case "]":
+            
         case "1", "2", "3", "4", "5", "6", "7", "8", "9":
             if let color = system.colors[character] {
                 self.lineColor = color
