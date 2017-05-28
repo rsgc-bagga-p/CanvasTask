@@ -109,9 +109,14 @@ public class EnhancedCanvas : Canvas {
         case "-":
             //turn right
             system.currentAngle -= system.angle
-//        case "[":
-//            system.systemStack.append(StateOfSystem.init(systemX: Float(system.x), systemY: Float(system.y), systemAngle: system.currentAngle))
-       // case "]":
+        case "[":
+            //saving all of the values before branching
+            system.systemStack.append(VisualizedLindenmayerSystem.StateOfSystem(systemX: system.x, systemY: system.y, systemAngle: system.currentAngle))
+        case "]":
+            //reverting to original state 
+            system.x = system.systemStack[system.systemStack.count - 1].systemX
+            system.y = system.systemStack[system.systemStack.count - 1].systemY
+            system.currentAngle = system.systemStack[system.systemStack.count - 1].systemAngle
             
         case "1", "2", "3", "4", "5", "6", "7", "8", "9":
             if let color = system.colors[character] {

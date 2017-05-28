@@ -10,6 +10,22 @@ import Foundation
 
 public class VisualizedLindenmayerSystem : LindenmayerSystem {
     
+    public struct StateOfSystem {
+        
+        var systemX: Float
+        var systemY: Float
+        var systemAngle: Degrees
+        
+        public init(systemX: Float, systemY: Float, systemAngle: Degrees) {
+            
+            self.systemX = systemX
+            self.systemY = systemY
+            self.systemAngle = systemAngle
+        }
+        
+        
+    }
+    
     var initialLength : Float               // initial line segment length
     var reduction : Float                   // reduction factor
     var x : Float                           // initial horizontal position of turtle
