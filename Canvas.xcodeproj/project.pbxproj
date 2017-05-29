@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3F3624321EBA52860007BEA1 /* LineColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3624311EBA52860007BEA1 /* LineColor.swift */; };
 		3FE250E71ECC81050056210B /* Successor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE250E61ECC81050056210B /* Successor.swift */; };
+		3FEEB5391EDBAFBC00503ACC /* l-systems.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3FEEB5381EDBAFBC00503ACC /* l-systems.txt */; };
+		3FEEB53B1EDBAFC900503ACC /* LineReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEB53A1EDBAFC900503ACC /* LineReader.swift */; };
+		3FEEB53D1EDBAFD700503ACC /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEB53C1EDBAFD700503ACC /* Gradient.swift */; };
 		81064A0A1C130A10007ED524 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81064A091C130A10007ED524 /* AppDelegate.swift */; };
 		81064A0C1C130A10007ED524 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81064A0B1C130A10007ED524 /* ViewController.swift */; };
 		81064A0E1C130A10007ED524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81064A0D1C130A10007ED524 /* Assets.xcassets */; };
@@ -23,6 +26,9 @@
 /* Begin PBXFileReference section */
 		3F3624311EBA52860007BEA1 /* LineColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineColor.swift; sourceTree = "<group>"; };
 		3FE250E61ECC81050056210B /* Successor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Successor.swift; sourceTree = "<group>"; };
+		3FEEB5381EDBAFBC00503ACC /* l-systems.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "l-systems.txt"; sourceTree = "<group>"; };
+		3FEEB53A1EDBAFC900503ACC /* LineReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineReader.swift; sourceTree = "<group>"; };
+		3FEEB53C1EDBAFD700503ACC /* Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		81064A061C130A10007ED524 /* Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81064A091C130A10007ED524 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81064A0B1C130A10007ED524 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +95,9 @@
 				81064A0F1C130A10007ED524 /* Main.storyboard */,
 				81064A121C130A10007ED524 /* Info.plist */,
 				3F3624311EBA52860007BEA1 /* LineColor.swift */,
+				3FEEB5381EDBAFBC00503ACC /* l-systems.txt */,
+				3FEEB53A1EDBAFC900503ACC /* LineReader.swift */,
+				3FEEB53C1EDBAFD700503ACC /* Gradient.swift */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -154,6 +163,7 @@
 			files = (
 				81064A0E1C130A10007ED524 /* Assets.xcassets in Resources */,
 				81064A111C130A10007ED524 /* Main.storyboard in Resources */,
+				3FEEB5391EDBAFBC00503ACC /* l-systems.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FEEB53B1EDBAFC900503ACC /* LineReader.swift in Sources */,
 				81064A0C1C130A10007ED524 /* ViewController.swift in Sources */,
 				81F1943D1EABB91100832CA6 /* LindenmayerSystem.swift in Sources */,
 				81EAC5A41D87DF52005DD91D /* Helper.swift in Sources */,
@@ -171,6 +182,7 @@
 				81678C541EBA34D3006FB3B9 /* VisualizedLindenmayerSystem.swift in Sources */,
 				81F1943C1EABB91100832CA6 /* EnhancedCanvas.swift in Sources */,
 				81064A1C1C132DA2007ED524 /* Sketch.swift in Sources */,
+				3FEEB53D1EDBAFD700503ACC /* Gradient.swift in Sources */,
 				3FE250E71ECC81050056210B /* Successor.swift in Sources */,
 				81064A0A1C130A10007ED524 /* AppDelegate.swift in Sources */,
 			);
