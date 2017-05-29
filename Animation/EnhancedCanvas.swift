@@ -56,7 +56,10 @@ public class EnhancedCanvas : Canvas {
         if system.animationPosition == 0 {
             
             // Change the line length
-            system.currentLength = Float( Double(system.initialLength) / pow(Double(system.reduction), Double(generation)) )
+            system.currentLength = Float(Double(system.initialLength) / pow(Double(system.reduction), Double(generation)))
+            
+            // Change the line thickness
+            system.currentThickness = Float(Double(system.initialThickness) / pow(Double(system.thicknessReduction), Double(generation)))
 
             // Move turtle to starting point
             //self.translate(byX: system.x, byY: system.y) // Move turtle to starting point
@@ -87,6 +90,8 @@ public class EnhancedCanvas : Canvas {
         
         let newX: Float = Float(CGFloat(system.x)) + Float(CGFloat(system.currentLength) * CGFloat(cos(system.currentAngle * CGFloat(M_PI)/180)))
         let newY: Float = Float(CGFloat(system.y)) + Float(CGFloat(system.currentLength) * CGFloat(sin(system.currentAngle * CGFloat(M_PI)/180)))
+        self.defaultLineWidth = Int(system.currentThickness)
+        print(defaultLineWidth)
         
         //print("OLDX: \(system.x)\tNEWX: \(newX)")
         //self.drawLine(fromX: system.x, fromY: system.y, toX: newX, toY: newY)

@@ -47,8 +47,8 @@ public class VisualizedLindenmayerSystem : LindenmayerSystem {
                 y: Float,
                 direction: Int,
                 colors: [Character : LineColor] = [:],
-                thickness: Float,
-                thicknessReduction: Float) {
+                thickness: Float = 1,
+                thicknessReduction: Float = 1) {
         
         // Initialize stored properties
         self.initialLength = length
