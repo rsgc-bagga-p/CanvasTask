@@ -10,22 +10,22 @@ import Foundation
 
 class FileReader {
     
-//    struct systemData {
-//        
-//        var xVal: Float = 0.0
-//        var yVal: Float = 0.0
-//        var axiom: String = ""
-//        var rules: [Character : [String]] = [:]
-//        var generations: Int = 0
-//        var direction: Float = 0
-//        var length: Float = 0
-//        var lengthReduction: Float = 0
-//        var thickness: Float = 0
-//        var thicknessReduction: Float = 0
-//        var angle: Degrees = 0
-//        var colours: [Character : LineColor] = [:]
-//        
-//    }
+    //    struct systemData {
+    //
+    //        var xVal: Float = 0.0
+    //        var yVal: Float = 0.0
+    //        var axiom: String = ""
+    //        var rules: [Character : [String]] = [:]
+    //        var generations: Int = 0
+    //        var direction: Float = 0
+    //        var length: Float = 0
+    //        var lengthReduction: Float = 0
+    //        var thickness: Float = 0
+    //        var thicknessReduction: Float = 0
+    //        var angle: Degrees = 0
+    //        var colours: [Character : LineColor] = [:]
+    //
+    //    }
     
     let path : String
     
@@ -105,15 +105,29 @@ class FileReader {
                 var cleanAgain = newRule[0].components(separatedBy: "\n")
                 while cleanAgain[0] != "}" {
                     
-                        newRule = value[lineNumber + adder].components(separatedBy: "\n")
-                        cleanAgain = newRule[0].components(separatedBy: "\n")
-                    var currentRule = cleanAgain[0].components(separatedBy: "=")
-                    let currentIndex = Character(currentRule[0])
                     
-                    rules[currentIndex]?.append(currentRule[1])
-                    
-                    adder += 1
+                    newRule = value[lineNumber + adder].components(separatedBy: "\n")
+                    cleanAgain = newRule[0].components(separatedBy: "\n")
+                    if cleanAgain[0] != "}" {
+                        print("STUCK")
+                        var currentRule = cleanAgain[0].components(separatedBy: "=")
+                        let currentIndex = Character(currentRule[0])
+
+                        if (rules[currentIndex] == nil) // if that key exists, add the values
+                        {
+                            rules[currentIndex] = []
+                            rules[currentIndex]?.append(currentRule[1])
+                        } else {
+                            rules[currentIndex]?.append(currentRule[1])
+                        }
+                        //                    } else {
+                        //                        // if the dictionary does not have that key, create it with the corresponding value
+                        //                        rules[currentIndex] = [currentRule[1]]
+                        //                    }
+                        adder += 1
+                    }
                 }
+                
                 break
             case "generations" :
                 generations = Int(dataType[1])!
@@ -125,20 +139,20 @@ class FileReader {
                 var cleanValues = newColourRule[0].components(separatedBy: "\n")
                 
                 while cleanValues[0] != "}" {
-                        newColourRule = value[lineNumber + lineChange].components(separatedBy: "\n")
-                        cleanValues = newColourRule[0].components(separatedBy: "\n")
+                    newColourRule = value[lineNumber + lineChange].components(separatedBy: "\n")
+                    cleanValues = newColourRule[0].components(separatedBy: "\n")
                     if cleanValues[0] != "}" {
-                    var currentColourRule = newColourRule[0].components(separatedBy: "=")
-                    let currentColourIndex = currentColourRule[0]
-                    var specificColours = currentColourRule[1].components(separatedBy: ",")
-                    
-                    let hue = Float(specificColours[0])!
-                    let saturation = Float(specificColours[1])!
-                    let brightness = Float(specificColours[2])!
-                    
-                    colours[Character(currentColourIndex)] = LineColor(hue: hue, saturation: saturation, brightness: brightness)
-                    
-                    lineChange += 1
+                        var currentColourRule = newColourRule[0].components(separatedBy: "=")
+                        let currentColourIndex = currentColourRule[0]
+                        var specificColours = currentColourRule[1].components(separatedBy: ",")
+                        
+                        let hue = Float(specificColours[0])!
+                        let saturation = Float(specificColours[1])!
+                        let brightness = Float(specificColours[2])!
+                        
+                        colours[Character(currentColourIndex)] = LineColor(hue: hue, saturation: saturation, brightness: brightness)
+                        
+                        lineChange += 1
                     }
                 }
                 break
@@ -171,8 +185,10 @@ class FileReader {
         
         let system : LindenmayerSystem = LindenmayerSystem(angle: angle, axiom: axiom, rule: rules, generations: generations)
         
-        
-        print("A")
+        print("DATA")
+        print(angle)
+        print(axiom)
+        print(rules)
         print(generations)
         print(length)
         print(lengthReduction)

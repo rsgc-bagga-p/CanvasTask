@@ -78,7 +78,7 @@ public func chooseSuccessor(input: [String]) -> String {
     if newArray != [] {
     
     chosenRule = newArray[random]
-    print(newArray)
+    //print(newArray)
         
     }
     

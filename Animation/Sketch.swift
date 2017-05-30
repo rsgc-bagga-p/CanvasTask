@@ -28,6 +28,8 @@ class Sketch : NSObject {
         
         print("A")
         print(visualizedLSystems[0].currentLength)
+        print(visualizedLSystems[0].reduction)
+
         
     }
     
@@ -35,7 +37,7 @@ class Sketch : NSObject {
     func draw() {
         
         // Render the current system
-        canvas.renderAnimated(systems: [visualizedLSystems[0]], generations: [5])
+        canvas.renderAnimated(systems: [visualizedLSystems[1]], generations: [5])
         
     }
     
