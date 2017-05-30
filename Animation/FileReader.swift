@@ -12,8 +12,6 @@ class FileReader {
     
     struct systemData {
         
-        var author: String = ""
-        var description: String = ""
         var xVal: Float = 0.0
         var yVal: Float = 0.0
         var axiom: String = ""
@@ -21,7 +19,7 @@ class FileReader {
         var generations: Int = 0
         var direction: Float = 0
         var length: Float = 0
-        var reduction: Float = 0
+        var lengthReduction: Float = 0
         var thickness: Float = 0
         var thicknessReduction: Float = 0
         var angle: Degrees = 0
@@ -63,16 +61,57 @@ class FileReader {
         return createLSystems(value: components)
     }
     
+    
     func createLSystems(value: [String]) -> [VisualizedLindenmayerSystem] {
         
         var system : systemData
         
         for (lineNumber, line) in value.enumerated() {
             
-        
-            var data = line.components(separatedBy: ":")
+            //need to clean up the value so there are no issues
+            var data = line.components(separatedBy: "\n")
+            var dataType = data[0].components(separatedBy: ":")
             
             
+            switch dataType[0] {
+                
+            case "angle" :
+                system.angle = Degrees(Int(dataType[1])!)
+                break
+            case "axiom" :
+                system.axiom = dataType[1]
+                break
+            case "rules" :
+                system.rules
+                break
+            case "generations" :
+                system.generations = Int(dataType[1])!
+                break
+            case "colors" :
+                system.colours
+                break
+            case "direction" :
+                system.direction = Float(dataType[1])!
+                break
+            case "length" :
+                system.length = Float(dataType[1])!
+                break
+            case "length_reduction" :
+                system.lengthReduction = Float(dataType[1])!
+                break
+            case "thickness" :
+                system.thickness = Float(dataType[1])!
+                break
+            case "thickness_reduction" :
+                system.thicknessReduction = Float(dataType[1])!
+                break
+            case "x" :
+                system.xVal = Float(x)!
+                break
+            case "y" :
+                system.yVal = Float(y)!
+                break
+            }
             
         }
         
