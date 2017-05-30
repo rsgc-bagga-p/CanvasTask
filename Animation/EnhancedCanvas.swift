@@ -103,7 +103,7 @@ public class EnhancedCanvas : Canvas {
             self.drawLine(fromX: system.x, fromY: system.y, toX: newX, toY: newY)
             system.x = newX
             system.y = newY
-            print("drewline")
+            //print("drewline")
         case "f":
             // Go forward without drawing a line
             system.x = newX

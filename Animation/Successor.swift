@@ -67,12 +67,40 @@ public func chooseSuccessor(input: [String]) -> String {
     var counter : Int = 0
     var odds : [Int] = []
     var chosenRule : String = ""
+    var cleanArray : [String] = []
+    var ruleCharacters : Int = 0
+    var checking : Bool = true
     //var probability : [Float] = []
     
     //create the odds array for each rule
     for rule in input {
         
+        while checking {
+        
+        for characters in rule.characters {
+            
+            if characters != "/" {
+                
+                ruleCharacters +=  1
+                
+                if ruleCharacters == rule.characters.count {
+                    
+                    return rule
+                    
+                }
+                
+            } else  if characters == "/" {
+                
+                checking = false
+                
+            }
+            
+        }
+        }
+        
         let oddsOfRule = rule.components(separatedBy: "/")
+        
+        cleanArray.append(oddsOfRule[1])
         
         if let ruleOdds = Int(oddsOfRule[0]) {
         
@@ -86,7 +114,7 @@ public func chooseSuccessor(input: [String]) -> String {
         
         for _ in 1...i {
             
-            newArray.append(input[counter])
+            newArray.append(cleanArray[counter])
             
         }
         counter += 1
@@ -102,6 +130,7 @@ public func chooseSuccessor(input: [String]) -> String {
     if newArray != [] {
     
     chosenRule = newArray[random]
+    print(newArray)
         
     }
     
