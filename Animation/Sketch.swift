@@ -184,7 +184,7 @@ class Sketch : NSObject {
     func draw() {
         
         // Render the current system
-        canvas.renderAnimated(systems: [/*smallMultipleRuleSystem,*/ smallKochSnowflake /*,smallBranchingSystem,smallBranchingSystem2*/], generations: [3])
+        canvas.renderAnimated(systems: [smallMultipleRuleSystem, smallKochSnowflake, smallBranchingSystem,smallBranchingSystem2], generations: [5,3,5,5])
         
     }
     
