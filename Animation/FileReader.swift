@@ -81,7 +81,7 @@ class FileReader {
         var length: Float = 0
         var lengthReduction: Float = 1
         var thickness: Float = 1
-        var thicknessReduction: Float = 0
+        var thicknessReduction: Float = 1
         var angle: Degrees = 0
         var colours: [Character : LineColor] = [:]
         
@@ -90,22 +90,24 @@ class FileReader {
             //need to clean up the value so there are no issues
             var data = line.components(separatedBy: "\n")
             var dataType = data[0].components(separatedBy: ":")
-            print(dataType[0])
             
             switch dataType[0] {
                 
             case "angle" :
-                angle = Degrees(Int(dataType[1])!)
+                angle = Degrees(Float(dataType[1])!)
                 break
             case "axiom" :
                 axiom = dataType[1]
                 break
             case "rules" :
                 var adder: Int = 2
-                while value[lineNumber + adder] != "}" {
+                var newRule = value[lineNumber + adder].components(separatedBy: "\n")
+                var cleanAgain = newRule[0].components(separatedBy: "\n")
+                while cleanAgain[0] != "}" {
                     
-                    var newRule = value[lineNumber + 2].components(separatedBy: "\n")
-                    var currentRule = newRule[0].components(separatedBy: "=")
+                        newRule = value[lineNumber + adder].components(separatedBy: "\n")
+                        cleanAgain = newRule[0].components(separatedBy: "\n")
+                    var currentRule = cleanAgain[0].components(separatedBy: "=")
                     let currentIndex = Character(currentRule[0])
                     
                     rules[currentIndex]?.append(currentRule[1])
@@ -117,10 +119,15 @@ class FileReader {
                 generations = Int(dataType[1])!
                 break
             case "colors" :
+                
                 var lineChange: Int = 2
-                while value[lineNumber + lineChange] != "}" {
-                    
-                    var newColourRule = value[lineNumber + 2].components(separatedBy: "\n")
+                var newColourRule = value[lineNumber + lineChange].components(separatedBy: "\n")
+                var cleanValues = newColourRule[0].components(separatedBy: "\n")
+                
+                while cleanValues[0] != "}" {
+                        newColourRule = value[lineNumber + lineChange].components(separatedBy: "\n")
+                        cleanValues = newColourRule[0].components(separatedBy: "\n")
+                    if cleanValues[0] != "}" {
                     var currentColourRule = newColourRule[0].components(separatedBy: "=")
                     let currentColourIndex = currentColourRule[0]
                     var specificColours = currentColourRule[1].components(separatedBy: ",")
@@ -132,6 +139,7 @@ class FileReader {
                     colours[Character(currentColourIndex)] = LineColor(hue: hue, saturation: saturation, brightness: brightness)
                     
                     lineChange += 1
+                    }
                 }
                 break
             case "direction" :
@@ -162,8 +170,23 @@ class FileReader {
         }
         
         let system : LindenmayerSystem = LindenmayerSystem(angle: angle, axiom: axiom, rule: rules, generations: generations)
-        let visualizsedSystem : VisualizedLindenmayerSystem = VisualizedLindenmayerSystem(with: system, length: length, reduction: lengthReduction, x: xVal, y: yVal, direction: direction, colors: colours, thickness: thickness, thicknessReduction: thicknessReduction)
-        return visualizsedSystem
+        
+        
+        print("A")
+        print(generations)
+        print(length)
+        print(lengthReduction)
+        print(xVal)
+        print(yVal)
+        print(direction)
+        print(colours)
+        print(thickness)
+        print(thicknessReduction)
+        
+        
+        let visualizedSystem : VisualizedLindenmayerSystem = VisualizedLindenmayerSystem(with: system, length: length, reduction: lengthReduction, x: xVal, y: yVal, direction: direction, colors: colours, thickness: thickness, thicknessReduction: thicknessReduction)
+        
+        return visualizedSystem
     }
     
 }

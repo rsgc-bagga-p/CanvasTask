@@ -593,7 +593,7 @@ B=A-B-A
 generations:4
 >
 direction:0
-length:1000 
+length:1000
 length_reduction:3
 x:100
 y:250

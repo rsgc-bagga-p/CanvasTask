@@ -98,13 +98,13 @@ public class EnhancedCanvas : Canvas {
         //print("OLDY: \(system.y)\tNEWY: \(newY)")
         // Interpret each character of the word
         switch character {
-        case "F", "X":
+        case "A", "B", "C", "D", "E", "F", "G","H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z":
             // Go forward while drawing a line
             self.drawLine(fromX: system.x, fromY: system.y, toX: newX, toY: newY)
             system.x = newX
             system.y = newY
             //print("drewline")
-        case "f":
+        case "a", "b", "c", "d", "e", "f", "g","h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z":
             // Go forward without drawing a line
             system.x = newX
             system.y = newY
