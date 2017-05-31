@@ -2,30 +2,50 @@ import Foundation
 
 public class EnhancedCanvas : Canvas {
     
-    public func render(system s : VisualizedLindenmayerSystem) {
-        
-        render(system: s, generation: s.n)
-        
-    }
+//    public func render(system s : VisualizedLindenmayerSystem) {
+//        
+//        render(systems: [s], generations: s.n)
+//        
+//    }
     
-    public func render(system : VisualizedLindenmayerSystem, generation : Int) {
+    public func render(systems : [VisualizedLindenmayerSystem], generations : [Int]) {
+        
+        var i = 0
+        
+        var generation: Int = 0
+
+        
+        for system in systems {
         
         // Verify that generation that was asked to be rendered actually exists
-        var generation = generation
+            if generations.count > i {
+                
+                generation = generations[i]
+                
+            } else {
+                
+                generation = generations[generations.count - 1]
+                
+            }
+
         if generation > system.n {
             generation = system.n
         }
         
         // Change the line length
         system.currentLength = Float( Double(system.initialLength) / pow(Double(system.reduction), Double(generation)) )
+            
+        // Change the line thickness
+        system.currentThickness = Float(Double(system.initialThickness) / pow(Double(system.thicknessReduction), Double(generation)))
         
         // Render the word
-        self.saveState()
+        //self.saveState()
         //self.translate(byX: system.x, byY: system.y) // Move turtle to starting point
         for c in system.word[generation].characters {
             interpret(character: c, forThis: system)
         }
-        self.restoreState()
+        //self.restoreState()
+        }
 
     }
     

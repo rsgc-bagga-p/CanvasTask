@@ -18,6 +18,8 @@ class Sketch : NSObject {
     
     override init() {
         
+        let deterministicPicture: [VisualizedLindenmayerSystem]
+        
         // Create a new canvas
         canvas = EnhancedCanvas(width: 500, height: 500)
         
@@ -25,19 +27,24 @@ class Sketch : NSObject {
         
         visualizedLSystems = file.analyzeFile()
         
+        // The frame rate can be adjusted; the default is 60 fps
+        canvas.framesPerSecond = 300
         
-        print("A")
-        print(visualizedLSystems[0].currentLength)
-        print(visualizedLSystems[0].reduction)
-
+        let gradient = Gradient(on: canvas)
+        let ground = Gradient(on: canvas)
+        
+        ground.makeGradient(lowerLeftX: 0, lowerLeftY: 0, from: 10, to: 22, brightness: 70)
+        gradient.makeGradient(lowerLeftX: 0, lowerLeftY: 100, from: 220, to: 268, brightness: 60)
         
     }
     
     // Runs repeatedly, equivalent to draw() in Processing
     func draw() {
         
+        
+        
         // Render the current system
-        canvas.renderAnimated(systems: [visualizedLSystems[1]], generations: [5])
+        canvas.render(systems: [visualizedLSystems[0]/*, visualizedLSystems[1], visualizedLSystems[2], visualizedLSystems[10]*/], generations: [5/*,2,5,5*/])
         
     }
     
