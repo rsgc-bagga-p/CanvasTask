@@ -15,10 +15,10 @@ class Sketch : NSObject {
     let canvas : EnhancedCanvas
     let file : FileReader
     let visualizedLSystems: [VisualizedLindenmayerSystem]
+   // var deterministicPicture: [VisualizedLindenmayerSystem]
+    //var naturalPicture: [VisualizedLindenmayerSystem]
     
     override init() {
-        
-        let deterministicPicture: [VisualizedLindenmayerSystem]
         
         // Create a new canvas
         canvas = EnhancedCanvas(width: 500, height: 500)
@@ -33,6 +33,19 @@ class Sketch : NSObject {
         let gradient = Gradient(on: canvas)
         let ground = Gradient(on: canvas)
         
+//        //deterministicPicture
+//        deterministicPicture.append(visualizedLSystems[0])
+//        deterministicPicture.append(visualizedLSystems[1])
+//        deterministicPicture.append(visualizedLSystems[2])
+//        deterministicPicture.append(visualizedLSystems[10])
+        
+//        //naturalPicture
+//        naturalPicture.append(visualizedLSystems[10])
+//        naturalPicture.append(visualizedLSystems[9])
+//        naturalPicture.append(visualizedLSystems[6])
+//        naturalPicture.append(visualizedLSystems[5])
+        
+        
         ground.makeGradient(lowerLeftX: 0, lowerLeftY: 0, from: 10, to: 22, brightness: 70)
         gradient.makeGradient(lowerLeftX: 0, lowerLeftY: 100, from: 220, to: 268, brightness: 60)
         
@@ -44,7 +57,7 @@ class Sketch : NSObject {
         
         
         // Render the current system
-        canvas.render(systems: [visualizedLSystems[0]/*, visualizedLSystems[1], visualizedLSystems[2], visualizedLSystems[10]*/], generations: [5/*,2,5,5*/])
+        canvas.render(systems: [visualizedLSystems[10],visualizedLSystems[9],visualizedLSystems[6],visualizedLSystems[5]], generations: [5,2,1,1])
         
     }
     

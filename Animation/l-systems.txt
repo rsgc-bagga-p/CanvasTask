@@ -146,12 +146,12 @@ colors:
 1=120,60,46
 }
 direction:180
-length:50
+length:2
 length_reduction:1
 thickness:1
 thickness_reduction:1
 x:250
-y:200
+y:100
 ]
 [
 author: Andrew Elder
@@ -166,10 +166,10 @@ Y=F-[F+F]-F
 generations:3
 >
 direction:0
-length:1000
-length_reduction:2
+length:7
+length_reduction:1
 x:100
-y:250
+y:100
 ]
 [
 <
@@ -233,7 +233,7 @@ direction:90
 length:40
 length_reduction:2
 x:400
-y:200
+y:100
 ]
 [
 <
